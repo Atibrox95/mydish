@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mydish
+  datasource:
+    username: root
+    password: N3r3aMysql.95
+    url: jdbc:mysql://localhost:3306/proyecto?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+    # Cuando arrancas no hagas nada 
+    # create: crear tablas, create-drop: borra tablas existentes y crea nuevas  
+    # validate: comprueba entitys contra tablas
+      ddl-auto: none 
+    show-sql: true # muestra las queries que se lanzan contra la base de datos
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
