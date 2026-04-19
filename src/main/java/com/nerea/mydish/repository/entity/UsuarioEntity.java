@@ -1,5 +1,7 @@
 package com.nerea.mydish.repository.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,4 +18,8 @@ public class UsuarioEntity {
 	private String apellidos;
 	private String correo;
 	private String contraseña;
+	private LocalDate fechaNacimiento;
+	private Double altura;
+	private Double peso;
+	private Double imc;
 }

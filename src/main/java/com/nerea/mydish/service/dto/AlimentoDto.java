@@ -6,6 +6,5 @@ import lombok.Data;
 public class AlimentoDto {
 	private Long idAlimento;
 	private String nombre;
-	private Long cal;
-
+	private Double cal;
 }

@@ -13,5 +13,5 @@ public class AlimentoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAlimento;
 	private String nombre;
-	private Long cal;
+	private Double cal;
 }

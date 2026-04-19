@@ -4,7 +4,7 @@ spring:
   datasource:
     username: root
     password: N3r3aMysql.95
-    url: jdbc:mysql://localhost:3306/proyecto?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/mydish_db?useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
