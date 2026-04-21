@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,8 +26,8 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/login")
-	public void iniciarSesion(@RequestParam String correo, @RequestParam String contraseña) throws Exception {
-		usuarioService.inicioSesion(correo, contraseña);
+	public void iniciarSesion(@RequestBody UsuarioDto usuario) throws Exception {
+		usuarioService.inicioSesion(usuario.getCorreo(), usuario.getContraseña());
 	}
 	
 	//cuando creas algo lo devuelves 
