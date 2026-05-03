@@ -6,6 +6,7 @@ import jakarta.persistence.Embeddable;
 import lombok.Data;
 
 @Data
+//Embeddable se mete dentro de otra entity
 @Embeddable
 public class PlatoAlimentoId implements Serializable {
 	

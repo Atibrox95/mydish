@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nerea.mydish.service.AlimentoService;
@@ -19,5 +20,10 @@ public class AlimentoController {
 	@GetMapping("/alimentos")
 	public List<AlimentoDto> recuperar() {
 		return alimentoService.recuperar();
+	}
+	
+	@GetMapping("/alimentos/tipo/{idTipo}")
+	public List<AlimentoDto> recuperarPorTipo(@PathVariable Long idTipo) {
+		return alimentoService.recuperarPorTipo(idTipo);
 	}
 }

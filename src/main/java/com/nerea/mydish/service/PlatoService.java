@@ -70,18 +70,22 @@ public class PlatoService {
 
 	// METODO PARA RECUERAR PLATOS POR USUARIO
 	public List<PlatoDto> recuperarPlatos(Long idUsuario) {
-		// Aqui buscamos todos los platos en repository por idUsuario y lo guardamos en
-		// una lista de tipo entity
-		List<PlatoEntity> platosRecuperados = platoRepository.findByUsuarioIdUsuario(idUsuario);
+	    List<PlatoEntity> platosRecuperados = platoRepository.findByUsuarioIdUsuario(idUsuario);
+	    List<PlatoDto> platosDto = new ArrayList<>();
 
-		// Ahora hacermos el mapeo de entity a dto
-		List<PlatoDto> platosDto = new ArrayList<PlatoDto>();
-		for (PlatoEntity platoEntity2 : platosRecuperados) {
-			PlatoDto platoDto = modelMapper.map(platoEntity2, PlatoDto.class);
-			platosDto.add(platoDto);
-		}
-		// devolvemos un platoDto
-		return platosDto;
+	    for (PlatoEntity entity : platosRecuperados) {
+	        // Mapeamos lo básico del plato (id, idUsuario)
+	        PlatoDto dto = modelMapper.map(entity, PlatoDto.class);
+	        
+	        // Mapeamos manualmente la lista de alimentos para asegurar que entran por el typeMap correcto
+	        List<AlimentoDto> listaAlimentos = entity.getAlimentos().stream()
+	            .map(pa -> modelMapper.map(pa, AlimentoDto.class))
+	            .toList();
+	        
+	        dto.setAlimentos(listaAlimentos);
+	        platosDto.add(dto);
+	    }
+	    return platosDto;
 	}
 
 	// METODO PARA ACTUALIZAR PLATO GUARDADO

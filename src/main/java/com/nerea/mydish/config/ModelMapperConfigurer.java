@@ -5,10 +5,12 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.nerea.mydish.repository.entity.AlimentoEntity;
 import com.nerea.mydish.repository.entity.PlatoAlimentoEntity;
 import com.nerea.mydish.repository.entity.PlatoEntity;
 import com.nerea.mydish.service.dto.AlimentoDto;
 import com.nerea.mydish.service.dto.PlatoDto;
+import com.nerea.mydish.service.dto.TipoDto;
 
 @Configuration
 public class ModelMapperConfigurer {
@@ -23,12 +25,16 @@ public class ModelMapperConfigurer {
 		//Damos instrucciones a modelMapper de lo que quiero exactamente que recoja de un platoEntity a un platoDto
 		modelMapper.typeMap(PlatoEntity.class, PlatoDto.class)
 				.addMappings(mapper -> mapper.map(src -> src.getUsuario().getIdUsuario(), PlatoDto::setIdUsuario));
+		modelMapper.typeMap(AlimentoEntity.class, TipoDto.class)
+		.addMappings(mapper -> mapper.map(src -> src.getTipo().getIdTipo(), TipoDto::setIdTipo));
 
 		//Esto es igual que lo anterior, pero recogiendo varias cosas, IdAlimento y Nombre de PlatoAlimentoEntity
 		modelMapper.typeMap(PlatoAlimentoEntity.class, AlimentoDto.class)
 		.addMappings(mapper -> {
 			mapper.map(src -> src.getAlimento().getIdAlimento(), AlimentoDto::setIdAlimento);
 			mapper.map(src -> src.getAlimento().getNombre(), AlimentoDto::setNombre);
+			mapper.map(src -> src.getAlimento().getCal(), AlimentoDto::setCal);
+	        mapper.map(src -> src.getAlimento().getTipo().getIdTipo(), AlimentoDto::setIdTipo);
 		});
 
 		return modelMapper;

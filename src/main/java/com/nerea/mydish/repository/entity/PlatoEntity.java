@@ -19,11 +19,12 @@ public class PlatoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPlato;
+	private String nombrePlato;
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private UsuarioEntity usuario;
 	
 	@OneToMany(mappedBy = "plato", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PlatoAlimentoEntity> alimentos = new ArrayList<>();
+    private List<PlatoAlimentoEntity> alimentos = new ArrayList<>();	
 }

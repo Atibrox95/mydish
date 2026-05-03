@@ -7,4 +7,5 @@ public class AlimentoDto {
 	private Long idAlimento;
 	private String nombre;
 	private Double cal;
+	private Long idTipo;
 }

@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.nerea.mydish.repository.UsuarioRepository;
 import com.nerea.mydish.repository.entity.UsuarioEntity;
@@ -48,7 +50,7 @@ public class UsuarioService {
 	 * @throws Exception Si no encuentra usuario o la contraseña no coincide
 	 */
 	
-	public void inicioSesion(String correo, String contraseña) throws Exception {
+	public UsuarioDto inicioSesion(String correo, String contraseña) throws Exception {
 		UsuarioEntity usuarioBuscado = new UsuarioEntity();
 		usuarioBuscado.setCorreo(correo);
 
@@ -69,9 +71,9 @@ public class UsuarioService {
 				//TODO: crear mi propia excepción y usarla
 				throw new Exception();
 			}
+			return modelMapper.map(usuarioEntity, UsuarioDto.class);
 		} else {
 			//TODO: crear mi propia excepción y usarla
-			throw new Exception(); 
-		}
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe");		}
 	}
 }

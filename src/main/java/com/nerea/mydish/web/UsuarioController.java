@@ -26,8 +26,8 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/login")
-	public void iniciarSesion(@RequestBody UsuarioDto usuario) throws Exception {
-		usuarioService.inicioSesion(usuario.getCorreo(), usuario.getContraseña());
+	public UsuarioDto iniciarSesion(@RequestBody UsuarioDto usuario) throws Exception {
+		return usuarioService.inicioSesion(usuario.getCorreo(), usuario.getContraseña());	
 	}
 	
 	//cuando creas algo lo devuelves 

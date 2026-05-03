@@ -23,4 +23,13 @@ public class AlimentoService {
 				.map(alimentoEntity -> modelMapper.map(alimentoEntity, AlimentoDto.class)).toList();
 		return alimentosDto;
 	}
+	
+	public List<AlimentoDto> recuperarPorTipo(Long idTipo) {
+        List<AlimentoEntity> alimentosEntity = alimentoRepository.findByTipoIdTipo(idTipo);
+        
+        return alimentosEntity.stream()
+                .map(entidad -> modelMapper.map(entidad, AlimentoDto.class))
+                .toList();
+    }
+	
 }
