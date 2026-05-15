@@ -37,6 +37,11 @@ public class UsuarioService {
 	 * @return
 	 */
 	public UsuarioDto registroUsuario(UsuarioDto usuario) {
+		if (usuarioRepository.existsByCorreo(usuario.getCorreo())) {
+	        // Lanzamos una excepción 
+	        throw new MyDishException("El correo ya está registrado", HttpStatus.CONFLICT);
+	    }
+		
 		// transformamos un dto en una entity porque al usar el metodo save, este recibe
 		// un parametro que siempre es una entity
 		UsuarioEntity usuarioEntity = modelMapper.map(usuario, UsuarioEntity.class);
