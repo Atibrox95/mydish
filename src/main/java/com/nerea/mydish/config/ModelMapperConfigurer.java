@@ -36,7 +36,6 @@ public class ModelMapperConfigurer {
 			mapper.map(src -> src.getAlimento().getCal(), AlimentoDto::setCal);
 	        mapper.map(src -> src.getAlimento().getTipo().getIdTipo(), AlimentoDto::setIdTipo);
 		});
-
 		return modelMapper;
 	}
 }

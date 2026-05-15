@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class PlatoDto {
 	private Long idPlato;
+	private String nombrePlato;
 	private Long idUsuario;
 	private List<AlimentoDto> alimentos;
 }

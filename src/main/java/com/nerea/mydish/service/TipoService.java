@@ -17,6 +17,9 @@ public class TipoService {
 	@Autowired
 	private TipoRepository tipoRepository;
 	
+	/**
+	 * @return
+	 */
 	public List<TipoDto> recuperar(){
 		List<TipoEntity> tiposEntity = tipoRepository.findAll();
 		List<TipoDto> tiposDto = tiposEntity.stream()

@@ -34,10 +34,15 @@ public class PlatoController {
 	public List<PlatoDto> recuperarPlatos(@RequestParam Long idUsuario) {
 		return platoService.recuperarPlatos(idUsuario);
 	}
-
+	
+	@GetMapping("/platos/{idPlato}")
+	public PlatoDto recuperarPlatoPorId(@PathVariable Long idPlato) {
+		return platoService.recuperarPlatoPorId(idPlato);
+	}
+	
 	@PutMapping("/platos/{idPlato}")
 	public PlatoDto actualizarPlato(@PathVariable Long idPlato, @RequestBody PlatoDto platoDto) {
-		return platoService.actualizarPLato(idPlato, platoDto);
+		return platoService.actualizarPlato(idPlato, platoDto);
 	}
 
 	@DeleteMapping("platos/{idPlato}")
