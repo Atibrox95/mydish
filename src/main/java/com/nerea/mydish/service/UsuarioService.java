@@ -94,6 +94,8 @@ public class UsuarioService {
 		usuarioExistente.setApellidos(usuarioDto.getApellidos());
 		usuarioExistente.setCorreo(usuarioDto.getCorreo());
 		usuarioExistente.setContraseña(usuarioDto.getContraseña());
+		usuarioExistente.setAltura(usuarioDto.getAltura());
+		usuarioExistente.setPeso(usuarioDto.getPeso());
 
 
 		// Guardamos entidad actualizada
